@@ -77,7 +77,7 @@ class HomeController @Inject() (computerService: ComputerService,
       formWithErrors => BadRequest(html.editForm(id, formWithErrors, companyService.options)),
       computer => {
         computerService.update(id, computer)
-        Home.flashing("success" -> "Computer %s has been updated".format(computer.name))
+        Home.flashing("success" -> "Client %s has been updated".format(computer.name))
       }
     )
   }
@@ -97,7 +97,7 @@ class HomeController @Inject() (computerService: ComputerService,
       formWithErrors => BadRequest(html.createForm(formWithErrors, companyService.options)),
       computer => {
         computerService.insert(computer)
-        Home.flashing("success" -> "Computer %s has been created".format(computer.name))
+        Home.flashing("success" -> "Client %s has been created".format(computer.name))
       }
     )
   }
@@ -107,7 +107,7 @@ class HomeController @Inject() (computerService: ComputerService,
    */
   def delete(id: Long) = Action {
     computerService.delete(id)
-    Home.flashing("success" -> "Computer has been deleted")
+    Home.flashing("success" -> "Client has been deleted")
   }
 
 }

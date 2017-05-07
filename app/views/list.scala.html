@@ -36,11 +36,11 @@
     <div id="actions">
         
         @b3.form(action=routes.HomeController.list()) {
-            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by computer name...">
+            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by client name...">
             <input type="submit" id="searchsubmit" value="Filter by name" class="btn primary">
         }
         
-        <a class="btn success" id="add" href="@routes.HomeController.create()">Add a new computer</a>
+        <a class="btn success" id="add" href="@routes.HomeController.create()">Add a new client</a>
         
     </div>
     
@@ -49,7 +49,7 @@
         <table class="computers zebra-striped">
             <thead>
                 <tr>
-                    @header(2, "Computer name")
+                    @header(2, "Client name")
                     @header(3, "Introduced")
                     @header(4, "Discontinued")
                     @header(5, "Company")

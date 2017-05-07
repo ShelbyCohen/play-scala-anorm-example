@@ -9,7 +9,7 @@
     @b3.form(routes.HomeController.save()) {
         
         <fieldset>
-            @b3.text(computerForm("name"), '_label -> "Computer name", '_help -> "")
+            @b3.text(computerForm("name"), '_label -> "Client name", '_help -> "")
             @b3.date(computerForm("introduced"), '_label -> "Introduced date", '_help -> "")
             @b3.date(computerForm("discontinued"), '_label -> "Discontinued date", '_help -> "")
 
@@ -22,7 +22,7 @@
         </fieldset>
         
         <div class="actions">
-            <input type="submit" value="Create this computer" class="btn primary"> or 
+            <input type="submit" value="Create this client" class="btn primary"> or
             <a href="@routes.HomeController.list()" class="btn">Cancel</a>
         </div>
         
