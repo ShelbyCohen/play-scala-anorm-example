@@ -52,7 +52,8 @@
                     @header(2, "Client name")
                     @header(3, "School Affiliation")
                     @header(4, "Discontinued")
-                    @header(5, "Trainer name")
+                    @header(5, "Sessions remaining")
+                    @header(6, "Trainer name")
                 </tr>
             </thead>
             <tbody>
@@ -66,6 +67,9 @@
                             </td>
                             <td>
                                 @computer.discontinued.map(_.format("dd MMM yyyy")).getOrElse { <em>-</em> }
+                            </td>
+                            <td>
+                            @computer.sessions
                             </td>
                             <td>
                                 @company.map(_.name).getOrElse { <em>-</em> }

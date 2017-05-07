@@ -11,6 +11,7 @@ case class Computer(id: Option[Long] = None,
                     name: String,
                     introduced: Option[String],
                     discontinued: Option[Date],
+                    sessions: Option[Int],
                     companyId: Option[Long])
 
 /**
@@ -37,9 +38,10 @@ class ComputerService @Inject() (dbapi: DBApi, companyService: CompanyService) {
       get[String]("computer.name") ~
       get[Option[String]]("computer.introduced") ~
       get[Option[Date]]("computer.discontinued") ~
+      get[Option[Int]]("computer.sessions") ~
       get[Option[Long]]("computer.company_id") map {
-      case id~name~introduced~discontinued~companyId =>
-        Computer(id, name, introduced, discontinued, companyId)
+      case id~name~introduced~discontinued~sessions~companyId =>
+        Computer(id, name, introduced, discontinued, sessions, companyId)
     }
   }
 
@@ -117,7 +119,7 @@ class ComputerService @Inject() (dbapi: DBApi, companyService: CompanyService) {
       SQL(
         """
           update computer
-          set name = {name}, introduced = {introduced}, discontinued = {discontinued}, company_id = {company_id}
+          set name = {name}, introduced = {introduced}, discontinued = {discontinued}, sessions = {sessions},company_id = {company_id}
           where id = {id}
         """
       ).on(
@@ -125,6 +127,7 @@ class ComputerService @Inject() (dbapi: DBApi, companyService: CompanyService) {
         'name -> computer.name,
         'introduced -> computer.introduced,
         'discontinued -> computer.discontinued,
+        'sessions -> computer.sessions,
         'company_id -> computer.companyId
       ).executeUpdate()
     }
@@ -141,13 +144,14 @@ class ComputerService @Inject() (dbapi: DBApi, companyService: CompanyService) {
         """
           insert into computer values (
             (select next value for computer_seq),
-            {name}, {introduced}, {discontinued}, {company_id}
+            {name}, {introduced}, {discontinued}, {sessions}, {company_id}
           )
         """
       ).on(
         'name -> computer.name,
         'introduced -> computer.introduced,
         'discontinued -> computer.discontinued,
+        'sessions -> computer.sessions,
         'company_id -> computer.companyId
       ).executeUpdate()
     }

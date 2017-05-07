@@ -15,6 +15,7 @@ create table computer (
   name                      varchar(255) not null,
   introduced                varchar(255),
   discontinued              timestamp,
+  sessions                  bigint,
   company_id                bigint,
   constraint pk_computer primary key (id))
 ;
