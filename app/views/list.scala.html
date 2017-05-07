@@ -50,7 +50,7 @@
             <thead>
                 <tr>
                     @header(2, "Client name")
-                    @header(3, "Introduced")
+                    @header(3, "School Affiliation")
                     @header(4, "Discontinued")
                     @header(5, "Company")
                 </tr>
@@ -62,7 +62,7 @@
                         <tr>
                             <td><a href="@routes.HomeController.edit(computer.id.get)">@computer.name</a></td>
                             <td>
-                                @computer.introduced.map(_.format("dd MMM yyyy")).getOrElse { <em>-</em> }
+                                @computer.introduced
                             </td>
                             <td>
                                 @computer.discontinued.map(_.format("dd MMM yyyy")).getOrElse { <em>-</em> }

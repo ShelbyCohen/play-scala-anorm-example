@@ -29,7 +29,7 @@ class HomeController @Inject() (computerService: ComputerService,
     mapping(
       "id" -> ignored(None:Option[Long]),
       "name" -> nonEmptyText,
-      "introduced" -> optional(date("yyyy-MM-dd")),
+      "introduced" -> optional(nonEmptyText),
       "discontinued" -> optional(date("yyyy-MM-dd")),
       "company" -> optional(longNumber)
     )(Computer.apply)(Computer.unapply)
