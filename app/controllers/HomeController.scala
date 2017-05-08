@@ -57,6 +57,10 @@ class HomeController @Inject() (computerService: ComputerService,
       orderBy, filter
     ))
   }
+
+  def login = Action {
+    Ok(html.login(computerForm, companyService.options))
+}
   
   /**
    * Display the 'edit form' of a existing Computer.

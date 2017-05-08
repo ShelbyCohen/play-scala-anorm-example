@@ -1,0 +1,30 @@
+@(computerForm: Form[Computer], companies: Seq[(String, String)])(implicit messages: Messages)
+
+@import b3.vertical.fieldConstructor
+
+@main {
+
+    <h1></h1>
+
+        <div class="container">
+            <div class="row">
+                <div class="form_bg2">
+                    <form>
+                        <h2 class="text-center">Login Page</h2>
+                        <br/>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="userid" placeholder="User id">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="pwd" placeholder="Password">
+
+                        </div>
+                        <br/>
+                        <div class="align-center">
+                            <a href="@routes.HomeController.list()" class="btn">Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
