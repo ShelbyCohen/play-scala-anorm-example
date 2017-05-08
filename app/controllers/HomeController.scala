@@ -32,6 +32,7 @@ class HomeController @Inject() (computerService: ComputerService,
       "introduced" -> optional(nonEmptyText),
       "discontinued" -> optional(date("yyyy-MM-dd")),
       "sessions" -> optional(number),
+      "package_type" -> optional(nonEmptyText),
       "company" -> optional(longNumber)
     )(Computer.apply)(Computer.unapply)
   )

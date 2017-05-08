@@ -53,7 +53,8 @@
                     @header(3, "School Affiliation")
                     @header(4, "Discontinued")
                     @header(5, "Sessions remaining")
-                    @header(6, "Trainer name")
+                    @header(6, "Package Type")
+                    @header(7, "Trainer name")
                 </tr>
             </thead>
             <tbody>
@@ -70,6 +71,9 @@
                             </td>
                             <td>
                             @computer.sessions
+                            </td>
+                            <td>
+                            @computer.package_type
                             </td>
                             <td>
                                 @company.map(_.name).getOrElse { <em>-</em> }
