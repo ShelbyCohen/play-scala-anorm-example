@@ -11,6 +11,7 @@ case class Computer(id: Option[Long] = None,
                     name: String,
                     introduced: Option[String],
                     discontinued: Option[Date],
+                    history: Option[String],
                     sessions: Option[Int],
                     package_type: Option[String],
                     companyId: Option[Long])
@@ -39,11 +40,12 @@ class ComputerService @Inject() (dbapi: DBApi, companyService: CompanyService) {
       get[String]("computer.name") ~
       get[Option[String]]("computer.introduced") ~
       get[Option[Date]]("computer.discontinued") ~
+      get[Option[String]]("computer.history") ~
       get[Option[Int]]("computer.sessions") ~
       get[Option[String]]("computer.package_type") ~
     get[Option[Long]]("computer.company_id") map {
-      case id~name~introduced~discontinued~sessions~package_type~companyId =>
-        Computer(id, name, introduced, discontinued, sessions, package_type, companyId)
+      case id~name~introduced~discontinued~history~sessions~package_type~companyId =>
+        Computer(id, name, introduced, discontinued, history, sessions, package_type, companyId)
     }
   }
 
@@ -129,6 +131,7 @@ class ComputerService @Inject() (dbapi: DBApi, companyService: CompanyService) {
         'name -> computer.name,
         'introduced -> computer.introduced,
         'discontinued -> computer.discontinued,
+        'history -> computer.history,
         'sessions -> computer.sessions,
         'package_type -> computer.package_type,
         'company_id -> computer.companyId
@@ -147,13 +150,14 @@ class ComputerService @Inject() (dbapi: DBApi, companyService: CompanyService) {
         """
           insert into computer values (
             (select next value for computer_seq),
-            {name}, {introduced}, {discontinued}, {sessions}, {package_type}, {company_id}
+            {name}, {introduced}, {discontinued}, {sessions}, {history}, {package_type}, {company_id}
           )
         """
       ).on(
         'name -> computer.name,
         'introduced -> computer.introduced,
         'discontinued -> computer.discontinued,
+        'history -> computer.history,
         'sessions -> computer.sessions,
         'package_type -> computer.package_type,
         'company_id -> computer.companyId
@@ -171,5 +175,7 @@ class ComputerService @Inject() (dbapi: DBApi, companyService: CompanyService) {
       SQL("delete from computer where id = {id}").on('id -> id).executeUpdate()
     }
   }
+
+
 
 }

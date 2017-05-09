@@ -51,7 +51,8 @@
                 <tr>
                     @header(2, "Client name")
                     @header(3, "School Affiliation")
-                    @header(4, "Date of Session")
+                    @header(4, "Most Recent Session")
+                    @header(4, "Dates of Past Sessions")
                     @header(5, "Sessions remaining")
                     @header(6, "Package Type")
                     @header(7, "Trainer name")
@@ -68,6 +69,9 @@
                             </td>
                             <td>
                                 @computer.discontinued.map(_.format("dd MMM yyyy")).getOrElse { <em>-</em> }
+                            </td>
+                            <td>
+                            @computer.history.map(_.format("dd MMM yyyy")).getOrElse { <em>-</em> }
                             </td>
                             <td>
                             @computer.sessions

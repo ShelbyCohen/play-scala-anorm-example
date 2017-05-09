@@ -16,6 +16,7 @@ create table computer (
   introduced                varchar(255),
   discontinued              timestamp,
   sessions                  bigint,
+  history                   varchar(255),
   package_type              varchar(255),
   company_id                bigint,
   constraint pk_computer primary key (id))
