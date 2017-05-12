@@ -40,19 +40,9 @@ class HomeController @Inject() (computerService: ComputerService,
       "company" -> optional(longNumber)
     )(Computer.apply)(Computer.unapply)
   )
-//
-//  /**
-//    * Describe the computer form (used in both edit and create screens).
-//    */
-//  val companyForm = Form(
-//    mapping(
-//      "id" -> ignored(None:Option[Long]),
-//      "name" -> nonEmptyText
-//    )(Company.apply)(Company.unapply)
-//  )
+
   
   // -- Actions
-
 
   /**
    * Handle default path requests, redirect to computers list
@@ -75,20 +65,6 @@ class HomeController @Inject() (computerService: ComputerService,
       orderBy, filter
     ))
   }
-//
-//  /**
-//    * Display the paginated list of computers.
-//    *
-//    * @param page Current page number (starts from 0)
-//    * @param orderBy Column to be sorted
-//    * @param filter Filter applied on computer names
-//    */
-//  def listTrainer(page: Int, orderBy: Int, filter: String) = Action { implicit request =>
-//    Ok(html.listTrainer(
-//      companyService.listTrainer(page = page, orderBy = orderBy, filter = ("%"+filter+"%")),
-//      orderBy, filter
-//    ))
-//  }
 
   def login = Action { Home }
   

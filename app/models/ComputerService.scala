@@ -123,7 +123,7 @@ class ComputerService @Inject() (dbapi: DBApi, companyService: CompanyService) {
       SQL(
         """
           update computer
-          set name = {name}, introduced = {introduced}, discontinued = {discontinued}, sessions = {sessions},package_type = {package_type},company_id = {company_id}
+          set name = {name}, introduced = {introduced}, discontinued = {discontinued}, sessions = {sessions}, history = {history}, package_type = {package_type},company_id = {company_id}
           where id = {id}
         """
       ).on(
